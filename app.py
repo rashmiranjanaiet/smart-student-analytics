@@ -4,8 +4,12 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load trained model
-model = pickle.load(open("model.pkl", "rb"))
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
+
+model = pickle.load(open(MODEL_PATH, "rb"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():
